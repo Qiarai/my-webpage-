@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant a Flower 🌸</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #DFF6FF, #FFC2E0);
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #ff6f61;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .flower {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: pink;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+            animation: sway 3s infinite;
+        }
+
+        .stem {
+            position: absolute;
+            bottom: -30px;
+            left: 22px;
+            width: 5px;
+            height: 50px;
+            background: green;
+            border-radius: 5px;
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: rotate(-10deg);
+            }
+            50% {
+                transform: rotate(10deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Click to Plant a Flower! 🌸</h1>
+    <p>Every click plants a new flower in a random spot. Go ahead and try it!</p>
+
+    <script>
+        // Function to plant a flower at a random position
+        function plantFlower(event) {
+            const flower = document.createElement("div");
+            flower.className = "flower";
+
+            const stem = document.createElement("div");
+            stem.className = "stem";
+            flower.appendChild(stem);
+
+            // Randomize the position of the flower
+            flower.style.top = `${event.clientY - 25}px`;
+            flower.style.left = `${event.clientX - 25}px`;
+
+            // Add the flower to the body
+            document.body.appendChild(flower);
+        }
+
+        // Listen for clicks to plant flowers
+        document.addEventListener("click", plantFlower);
+    </script>
+</body>
+</html>
